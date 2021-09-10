@@ -54,8 +54,8 @@ class LinebotController < ApplicationController
           else
             push = "現在地では何かが発生していますが、\nご自身でお確かめください。\u{1F605}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
           end
+        }
         end
         head :ok
       end
-      }
   end
