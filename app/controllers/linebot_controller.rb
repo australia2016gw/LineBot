@@ -34,6 +34,10 @@ class LinebotController < ApplicationController
           p event.message['latitude']
           p event.message['longitude']
 　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+　　　　　
+　　　　　t = "test"
+　　　　　p t
+　　　　　
           latitude = event.message['latitude']
           longitude = event.message['longitude']
           appId = ENV["API_KEY"]
