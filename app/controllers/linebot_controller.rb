@@ -22,20 +22,12 @@ class LinebotController < ApplicationController
     unless client.validate_signature(body, signature)
       error 400 do 'Bad Request' end
     end
-    
-    p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
  
     events = client.parse_events_from(body)
-    
-    p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
  
     events.each do |event|
-      p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
       case event
       when Line::Bot::Event::Message
-        p event
-        p event.type
-        p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
         case event.type
         when Line::Bot::Event::MessageType::Location
           p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -44,10 +36,9 @@ class LinebotController < ApplicationController
 　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           latitude = event.message['latitude']
           longitude = event.message['longitude']
-          p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           appId = ENV["API_KEY"]
+          p "#{appId}"
           url= "http://api.openweathermap.org/data/2.5/forecast?lon=#{longitude}&lat=#{latitude}&APPID=#{appId}&units=metric&mode=xml"
-          p url
           p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           # XMLをパースしていく
           xml  = open( url ).read.toutf8
