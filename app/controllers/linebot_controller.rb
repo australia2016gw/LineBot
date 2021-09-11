@@ -30,14 +30,14 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Location
-          p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-          p event.message['latitude']
-          p event.message['longitude']
-　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-　　　　　
-　　　　　t = "test"
-　　　　　p t
-　　　　　
+          #p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          #p event.message['latitude']
+          #p event.message['longitude']
+　　　　　#p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+　　　　　#
+　　　　　#t = "test"
+　　　　　#p t
+　　　　  #　
           latitude = event.message['latitude']
           longitude = event.message['longitude']
           appId = ENV["API_KEY"]
