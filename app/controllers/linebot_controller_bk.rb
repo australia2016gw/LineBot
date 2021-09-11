@@ -23,7 +23,7 @@ class LinebotController < ApplicationController
  
     events = client.parse_events_from(body)
  
-    events.each do |event|
+    events.each { |event|
       case event
       when Line::Bot::Event::Message
         case event.type
@@ -57,7 +57,4 @@ class LinebotController < ApplicationController
         end
         head :ok
       end
-    end
   end
-  
-  
