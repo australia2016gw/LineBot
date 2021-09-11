@@ -33,9 +33,11 @@ class LinebotController < ApplicationController
           longitude = event.message['longitude']
           appId = ENV["API_KEY"]
           url= "http://api.openweathermap.org/data/2.5/forecast?lon=#{longitude}&lat=#{latitude}&APPID=#{appId}&units=metric&mode=xml"
+          p url
           # XMLをパースしていく
           xml  = open( url ).read.toutf8
           doc = REXML::Document.new(xml)
+          p doc
           xpath = 'weatherdata/forecast/time[1]/'
           nowWearther = doc.elements[xpath + 'symbol'].attributes['name']
           nowTemp = doc.elements[xpath + 'temperature'].attributes['value']
