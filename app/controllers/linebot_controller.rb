@@ -40,6 +40,7 @@ class LinebotController < ApplicationController
         p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
         case event.type
         when Line::Bot::Event::MessageType::Location
+          p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 　　　　　# LINEの位置情報から緯度経度を取得
 　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           latitude = event.message['latitude']
@@ -73,6 +74,7 @@ class LinebotController < ApplicationController
             push = "現在地では何かが発生していますが、\nご自身でお確かめください。\u{1F605}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
           end
         end
+        p "end???????????????????????????????????????????????"
         head :ok
       end
     end
