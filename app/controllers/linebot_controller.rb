@@ -34,6 +34,8 @@ class LinebotController < ApplicationController
       case event
       when Line::Bot::Event::Message
         p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+        p event
+        p event.type
         case event.type
         when Line::Bot::Event::MessageType::Location
 　　　　　# LINEの位置情報から緯度経度を取得
