@@ -30,13 +30,17 @@ class LinebotController < ApplicationController
     p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
  
     events.each do |event|
+      p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
       case event
       when Line::Bot::Event::Message
+        p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
         case event.type
         when Line::Bot::Event::MessageType::Location
 　　　　　# LINEの位置情報から緯度経度を取得
+　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           latitude = event.message['latitude']
           longitude = event.message['longitude']
+          p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           appId = ENV["API_KEY"]
           url= "http://api.openweathermap.org/data/2.5/forecast?lon=#{longitude}&lat=#{latitude}&APPID=#{appId}&units=metric&mode=xml"
           p url
