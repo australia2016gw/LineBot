@@ -35,12 +35,12 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         p event
         p event.type
-        p event.message['latitude']
-        p event.message['longitude']
         p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
         case event.type
         when Line::Bot::Event::MessageType::Location
           p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          p event.message['latitude']
+          p event.message['longitude']
 　　　　　# LINEの位置情報から緯度経度を取得
 　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           latitude = event.message['latitude']
