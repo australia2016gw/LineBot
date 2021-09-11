@@ -41,7 +41,6 @@ class LinebotController < ApplicationController
           p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           p event.message['latitude']
           p event.message['longitude']
-　　　　　# LINEの位置情報から緯度経度を取得
 　　　　　p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
           latitude = event.message['latitude']
           longitude = event.message['longitude']
