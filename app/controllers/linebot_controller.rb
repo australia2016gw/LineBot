@@ -46,16 +46,22 @@ class LinebotController < ApplicationController
           # 条件が一致した場合、メッセージを返す処理。絵文字も入れています。
           when /.*(clear sky|few clouds).*/
             push = "現在地の天気は晴れです\u{2600}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "晴れ"
           when /.*(scattered clouds|broken clouds|overcast clouds).*/
             push = "現在地の天気は曇りです\u{2601}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "曇り"
           when /.*(rain|thunderstorm|drizzle).*/
             push = "現在地の天気は雨です\u{2614}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "雨"
           when /.*(snow).*/
             push = "現在地の天気は雪です\u{2744}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "雪"
           when /.*(fog|mist|Haze).*/
             push = "現在地では霧が発生しています\u{1F32B}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "霧"
           else
             push = "現在地では何かが発生していますが、\nご自身でお確かめください。\u{1F605}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            p "その他"
           end
         end
         p "end???????????????????????????????????????????????"
