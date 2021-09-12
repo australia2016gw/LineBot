@@ -41,6 +41,7 @@ class LinebotController < ApplicationController
           xpath = 'weatherdata/forecast/time[1]/'
           nowWearther = doc.elements[xpath + 'symbol'].attributes['name']
           nowTemp = doc.elements[xpath + 'temperature'].attributes['value']
+          p nowWearther
           case nowWearther
           # 条件が一致した場合、メッセージを返す処理。絵文字も入れています。
           when /.*(clear sky|few clouds).*/
