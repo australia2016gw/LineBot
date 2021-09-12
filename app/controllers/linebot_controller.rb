@@ -36,7 +36,7 @@ class LinebotController < ApplicationController
 　　　　　#p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
 　　　　　#
 　　　　　t = "test"
-　　　　　p t
+　　　　　puts "#{t}"
 　　　　  #　
           latitude = event.message['latitude']
           longitude = event.message['longitude']
