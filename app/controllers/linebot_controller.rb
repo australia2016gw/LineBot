@@ -15,8 +15,6 @@ class LinebotController < ApplicationController
  
   def callback
     body = request.body.read
-    
-    p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
  
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
@@ -30,15 +28,10 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Location
-          #p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-          #p event.message['latitude']
-          #p event.message['longitude']
-　　　　　#p "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-　　　　　#
-　　　　　t = "test"
-　　　　　puts "#{t}"
-　　　　  #　
+          p "here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          p event.message['latitude']
           latitude = event.message['latitude']
+          p event.message['longitude']
           longitude = event.message['longitude']
           appId = ENV["API_KEY"]
           url= "http://api.openweathermap.org/data/2.5/forecast?lon=#{longitude}&lat=#{latitude}&APPID=#{appId}&units=metric&mode=xml"
