@@ -37,25 +37,24 @@ class LinebotController < ApplicationController
           doc = REXML::Document.new(xml)
           p "xml"
           p xml
-          p "doc"
-          p doc
           xpath = 'weatherdata/forecast/time[1]/'
           nowWearther = doc.elements[xpath + 'symbol'].attributes['name']
           nowTemp = doc.elements[xpath + 'temperature'].attributes['value']
+          nowHumidity = doc.elements[xpath + 'humidity'].attributes['value']
           case nowWearther
           # 条件が一致した場合、メッセージを返す処理。絵文字も入れています。
           when /.*(clear sky|few clouds).*/
-            push = "現在地の天気は晴れです\u{2600}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地の天気は晴れです\u{2600}\n\n現在の気温は#{nowTemp}℃です\u{1F321}\n\n現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           when /.*(scattered clouds|broken clouds|overcast clouds).*/
-            push = "現在地の天気は曇りです\u{2601}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地の天気は曇りです\u{2601}\n\n現在の気温は#{nowTemp}℃です\u{1F321}現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           when /.*(rain|thunderstorm|drizzle).*/
-            push = "現在地の天気は雨です\u{2614}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地の天気は雨です\u{2614}\n\n現在の気温は#{nowTemp}℃です\u{1F321}現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           when /.*(snow).*/
-            push = "現在地の天気は雪です\u{2744}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地の天気は雪です\u{2744}\n\n現在の気温は#{nowTemp}℃です\u{1F321}現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           when /.*(fog|mist|Haze).*/
-            push = "現在地では霧が発生しています\u{1F32B}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地では霧が発生しています\u{1F32B}\n\n現在の気温は#{nowTemp}℃です\u{1F321}現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           else
-            push = "現在地では何かが発生していますが、\nご自身でお確かめください。\u{1F605}\n\n現在の気温は#{nowTemp}℃です\u{1F321}"
+            push = "現在地では何かが発生していますが、\nご自身でお確かめください。\u{1F605}\n\n現在の気温は#{nowTemp}℃です\u{1F321}現在の湿度は#{nowHumidity}℃です\u{1F4A7}"
           end
           message = {
             type: 'text',
