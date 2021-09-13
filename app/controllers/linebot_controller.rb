@@ -35,6 +35,9 @@ class LinebotController < ApplicationController
           # XMLをパースしていく
           xml  = open( url ).read.toutf8
           doc = REXML::Document.new(xml)
+          p "xml"
+          p xml
+          p "doc"
           p doc
           xpath = 'weatherdata/forecast/time[1]/'
           nowWearther = doc.elements[xpath + 'symbol'].attributes['name']
